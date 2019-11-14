@@ -125,7 +125,7 @@ public class Auditorium{
 
 	public String changeChairStatus(int row, int column, String description){
 		String message="";
-		if(chairs[row][column].getStatus().equalsIgnoreCase(Chair.DEFECTUOSA)){
+		if(chairs[row][column].getStatus().equalsIgnoreCase(Chair.OPERATIVA)){
 			chairs[row][column].setStatus(Chair.DEFECTUOSA);
 			chairs[row][column].setStatusForEvent(Chair.NODISPONIBLE);
 			chairs[row][column].setDescriptionDefective(description);	

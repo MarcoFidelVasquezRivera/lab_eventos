@@ -92,7 +92,7 @@ public class University{
 		for(int i=0;i<auditorium.size() && !flag;i++){
 			if(auditorium.get(i).getName().equalsIgnoreCase(auditoriumName) && auditorium.get(i).getChairs().length>row){
 				if(auditorium.get(i).getChairs()[row].length>column){
-
+					System.out.println("kukukuku");
 					message=auditorium.get(i).changeChairStatus(row,column,description);
 						
 				}
