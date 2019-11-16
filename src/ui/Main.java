@@ -53,20 +53,29 @@ public class Main{
 				case 5:	System.out.println(main.reportDefectiveChair());
 						break;
 
-				case 6: exit=true;
+				case 6:	System.out.println(main.showChairs());
+						break;
 
+				case 7: System.out.println(main.reportAssistant());
+						break;
+
+				case 8:	System.out.println(main.university.showPastEvents());
+						break;
+
+				case 9: exit=true;
+						break;
 
 			}
 
-
 		}
 
-
-
-
-
+		System.out.println("thank you for your use");
 	}
 
+/**
+*<b>Name:</b> showMenu.<br>
+*This method shows the principal menu.<br>
+*/
 	public void showMenu(){
 		System.out.println("please enter the operation that you want to do:");
 		System.out.println("1: add a new auditorium");
@@ -74,9 +83,18 @@ public class Main{
 		System.out.println("3: add a new event");
 		System.out.println("4: calculate the percent of defective chairs in an auditorium");
 		System.out.println("5: report a defective chair");
-		System.out.println("6: exit");
+		System.out.println("6: show chairs of an auditorium");
+		System.out.println("7: report assistent to an event");
+		System.out.println("8: show past events");
+		System.out.println("9: exit");
 	}
 
+/**
+*<b>Name:</b> addAuditorium.<br>
+*This method shows the menu to add an auditorium, get its attributes and call the method to save the auditorium<br>
+*<b>Pos:</b> an auditorium has been created.<br>
+*@return return a message that say if the auditorium has been saved or a problem has happened<br>
+*/
 	public String addAuditorium(){
 		String name="";
 		String nameBuilding="";
@@ -85,7 +103,7 @@ public class Main{
 		int[] chairsToMake;
 
 		System.out.println("please enter the auditorium's name");
-		name=reader.next();
+		name=readerThree.nextLine();
 		System.out.println("please enter the building's name where is the auditorium");
 		nameBuilding=reader.next();
 		message=university.addAuditorium(name,nameBuilding);
@@ -108,6 +126,12 @@ public class Main{
 		return message;
 	}
 
+/**
+*<b>Name:</b> addEvent.<br>
+*This method shows the menu to add an event, get its attributes and call the method to save the event<br>
+*<b>Pos:</b> an event has been created.<br>
+*@return return a message that say if the event has been saved or a problem has happened<br>
+*/
 	public String addEvent(){
 		String name="";
 		int day=0;
@@ -119,11 +143,11 @@ public class Main{
 		int year=0;
 		int month=0;
 		int quantityAuditoriums=0;
-		int[]auditoriums;
+		String[]auditoriums;
 		String message="";
 
 		System.out.println("please enter the event's name");
-		name=reader.next();
+		name=readerThree.nextLine();
 		System.out.println("plese enter the year when is the event");
 		year=readerTwo.nextInt();
 		System.out.println("please enter the number of the month when is the event");
@@ -132,14 +156,12 @@ public class Main{
 			System.out.println("the number must be between 1 and 12");
 			month=readerTwo.nextInt();
 		}
-		System.out.println("please enter the day when is the event");
+		System.out.println("please enter the day of the event");
 		day=readerTwo.nextInt();
 		System.out.println("please enter the name of the teacher responsible of the event");
 		responsibleTeacherName=readerThree.nextLine();
 		System.out.println("please enter the name of the faculty responsible of the event");
 		responsibleFaculty=readerThree.nextLine();
-		System.out.println("please enter the number of people that will attend");
-		numberPeopleAttended=readerTwo.nextInt();
 		System.out.println("please enter the start hour of the event, remember that the auditories are oppened since 7 hours until 20 hours");
 		startHour=readerTwo.nextInt();
 
@@ -164,18 +186,23 @@ public class Main{
 			quantityAuditoriums=readerTwo.nextInt();
 		}
 
-		auditoriums=new int[quantityAuditoriums];
+		auditoriums=new String[quantityAuditoriums];
 
 		for(int i=0;i<auditoriums.length;i++){
-			System.out.println("please enter the number of the auditorium number "+(i+1)+" that you will use");
-			auditoriums[i]=readerTwo.nextInt();
+			System.out.println("please enter the name of the auditorium number "+(i+1)+" that you will use");
+			auditoriums[i]=readerTwo.next();
 		}
 
-		message=university.addEvent(name,day,startHour,endHour,responsibleTeacherName,responsibleFaculty,numberPeopleAttended,auditoriums,year,month);
+		message=university.addEvent(name,day,startHour,endHour,responsibleTeacherName,responsibleFaculty,auditoriums,year,month);
 
 		return message;
 	}
 
+/**
+*<b>Name:</b> defectiveChairPercent.<br>
+*This method shows the menu to get the percent of defective chairs<br>
+*@return return a message that containc the percent of chairs defectives<br>
+*/
 	public String defectiveChairsPercent(){
 		String message="";
 		String auditoriumName="";
@@ -188,6 +215,12 @@ public class Main{
 		return message;
 	}
 
+/**
+*<b>Name:</b> reportDefectiveChair.<br>
+*This method shows the menu report a defective chair <br>
+*<b>Pos:</b> the status of the chair has been changed to "defectusoda" an its status for events has been changed to "no disponible".<br>
+*@return return a message that informs if the chair has been reported successfully or an error has happened<br>
+*/
 	public String reportDefectiveChair(){
 		String message="";
 		String auditoriumName="";
@@ -212,6 +245,63 @@ public class Main{
 		message=university.reportChairDefective(auditoriumName,row,column,description);
 
 		return message;
+	}
+
+/**
+*<b>Name:</b> showChairs.<br>
+*This method shows the chairs of an auditorium<br>
+*@return return a message with the chairs' information<br>
+*/
+	public String showChairs(){
+		String message="";
+		String auditoriumName="";
+		System.out.println("please enter the auditorium's name where is the chair");
+		auditoriumName=reader.next();
+
+		System.out.println(university.showChairs(auditoriumName));
+
+		return message;
+	}
+
+/**
+*<b>Name:</b> reportAssistant.<br>
+*This method shows the menu report an assistant and call the method to report it<br>
+*<b>Pos:</b> assistant has been repoted.<br>
+*@return return a message that informs if the assistant reported successfully or an error has happened<br>
+*/
+	public String reportAssistant(){
+		String message="";
+		String auditoriumName="";
+
+		System.out.println(university.showAuditorium());
+		System.out.println("please enter the auditorium's name");
+		auditoriumName=reader.next();
+
+		message=university.reportAssitantEvent(auditoriumName);
+
+		return message;
+	}
+
+/**
+*<b>Name:</b> init.<br>
+*This method makes two auditoriums<br>
+*<b>Pos:</b> auditoriums has been created.<br>
+*/
+	public void init(){
+		int[] chairsOne=new int [3];
+		chairsOne[0]=2;
+		chairsOne[1]=2;
+		chairsOne[2]=2;
+
+		int[] chairsTwo=new int [2];
+		chairsTwo[0]=3;
+		chairsTwo[1]=3;
+
+		university.addAuditorium("manuelita","L");
+		university.addAuditorium("varela","G");
+
+		university.makeChairsAuditorium(chairsOne,"manuelita");
+		university.makeChairsAuditorium(chairsTwo,"varela");
 	}
 
 }

@@ -16,14 +16,14 @@ public class Event{
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++
 //						METHODS
 //+++++++++++++++++++++++++++++++++++++++++++++++++++++
-	public Event(String name, int day, int startHour, int endHour, String responsibleTeacherName, String responsibleFaculty, int numberPeopleAttended,int year,int month){
+	public Event(String name, int day, int startHour, int endHour, String responsibleTeacherName, String responsibleFaculty,int year,int month){
 		this.name=name;
 		this.day=day;
 		this.startHour=startHour;
 		this.endHour=endHour;
-		this. responsibleTeacherName=responsibleTeacherName;
+		this.responsibleTeacherName=responsibleTeacherName;
 		this.responsibleFaculty=responsibleFaculty;
-		this.numberPeopleAttended=numberPeopleAttended;
+		this.numberPeopleAttended=0;
 		this.year=year;
 		this.month=month;
 	}
@@ -62,6 +62,10 @@ public class Event{
 
 	public int getPeopleAttended(){
 		return numberPeopleAttended;
+	}
+
+	public void setPeopleAttended(int numberPeopleAttended){
+		this.numberPeopleAttended=numberPeopleAttended;
 	}
 
 
