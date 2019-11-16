@@ -233,10 +233,10 @@ public class Main{
 
 		System.out.println(university.showChairs(auditoriumName));
 
-		System.out.println("please enter the row where is the chair");
+		System.out.println("please enter the number of row where is the chair");
 		row=readerTwo.nextInt();
 		row--;
-		System.out.println("please enter the column where is the chair");
+		System.out.println("please enter the number of column where is the chair");
 		column=readerTwo.nextInt();
 		column--;
 		System.out.println("please enter a description of the defect");
